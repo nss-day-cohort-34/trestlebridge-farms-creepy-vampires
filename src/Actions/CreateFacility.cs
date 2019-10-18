@@ -19,15 +19,21 @@ namespace Trestlebridge.Actions {
             string input = Console.ReadLine();
 
             switch (Int32.Parse(input)) {
+                // Added case for all facilities
                 case 1:
                     farm.AddGrazingField(new GrazingField());
                     break;
-                // Added case for all fields
                 case 2:
-                farm.AddPlowedField(new PlowedField());
-                break;
+                    farm.AddPlowedField(new PlowedField());
+                    break;
                 case 3:
                     farm.AddNaturalField(new NaturalField());
+                    break;
+                case 4:
+                    farm.AddChickenHouse(new ChickenHouse());
+                    break;
+                case 5:
+                    farm.AddDuckHouse(new DuckHouse());
                     break;
                 default:
                     break;
