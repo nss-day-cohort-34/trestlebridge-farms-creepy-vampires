@@ -17,13 +17,16 @@ namespace Trestlebridge.Models.Facilities {
         }
 
         public void AddResource(IGrazing animal) {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            // Take in an IGrazing animal and add it to the field's _animal List
+            _animals.Add(animal);
         }
 
         public void AddResource(List<IGrazing> animals) {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            // Take in a list of Igrazing animals and add each one to the field's _animal List
+            foreach(IGrazing animal in animals)
+            {
+                _animals.Add(animal);
+            }
         }
 
         public override string ToString() {
