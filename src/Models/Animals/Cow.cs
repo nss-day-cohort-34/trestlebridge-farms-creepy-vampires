@@ -18,15 +18,15 @@ namespace Trestlebridge.Models.Animals {
         public string Type { get; } = "Cow";
 
         // Methods
-        public void Graze () {
+        public void Graze() {
             Console.WriteLine($"Cow {this._shortId} just ate {this.GrassPerDay}kg of grass");
         }
 
-        public double Butcher () {
+        public double Butcher() {
             return _meatProduced;
         }
 
-        public override string ToString () {
+        public override string ToString() {
             return $"Cow {this._shortId}. Mooo!";
         }
     }
