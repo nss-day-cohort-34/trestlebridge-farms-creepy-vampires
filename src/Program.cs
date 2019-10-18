@@ -3,12 +3,9 @@ using System.Linq;
 using Trestlebridge.Actions;
 using Trestlebridge.Models;
 
-namespace Trestlebridge
-{
-    class Program
-    {
-        static void DisplayBanner ()
-        {
+namespace Trestlebridge {
+    class Program {
+        static void DisplayBanner() {
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine(@"
@@ -20,15 +17,13 @@ namespace Trestlebridge
             Console.WriteLine();
         }
 
-        static void Main(string[] args)
-        {
+        static void Main(string[] args) {
             Console.ForegroundColor = ConsoleColor.White;
-			Console.BackgroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Black;
 
             Farm Trestlebridge = new Farm();
 
-            while (true)
-            {
+            while (true) {
                 DisplayBanner();
                 Console.WriteLine("1. Create Facility");
                 Console.WriteLine("2. Purchase Animals");
@@ -41,31 +36,22 @@ namespace Trestlebridge
                 Console.Write("> ");
                 string option = Console.ReadLine();
 
-                if (option == "1")
-                {
+                if (option == "1") {
                     DisplayBanner();
                     CreateFacility.CollectInput(Trestlebridge);
-                }
-                else if (option == "2")
-                {
+                } else if (option == "2") {
                     DisplayBanner();
                     PurchaseStock.CollectInput(Trestlebridge);
-                }
-                else if (option == "4")
-                {
+                } else if (option == "4") {
                     DisplayBanner();
                     Console.WriteLine(Trestlebridge);
                     Console.WriteLine("\n\n\n");
                     Console.WriteLine("Press return key to go back to main menu.");
                     Console.ReadLine();
-                }
-                else if (option == "5")
-                {
+                } else if (option == "5") {
                     Console.WriteLine("Today is a great day for farming");
                     break;
-                }
-                else
-                {
+                } else {
                     Console.WriteLine($"Invalid option: {option}");
                 }
             }
