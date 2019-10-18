@@ -1,6 +1,42 @@
-namespace Trestlebridge.Models.Animals
-{
-    public class Chicken
-    {
+using System;
+using System.Collections.Generic;
+using Trestlebridge.Interfaces;
+namespace Trestlebridge.Models.Animals {
+    public class Chicken : IResource, IFeed, IMeatProducing, IEggProducing, IFeatherProducing {
+
+        private Guid _id = Guid.NewGuid();
+        private double _feathersProduced = 0.5;
+        private int _eggsProduces = 7;
+        private double _meatProduced = 1.7;
+
+        private string _shortId {
+            get {
+                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+            }
+        }
+
+        public string Type { get; } = "Chicken";
+        public double FeedPerDay { get; set; } = 0.9;
+
+        // Methods
+        public double Pluck() {
+            return _feathersProduced;
+        }
+
+        public double CollectEggs() {
+            return _eggsProduces;
+        }
+        public double Butcher() {
+            return _meatProduced;
+        }
+
+        public override string ToString() {
+            return $"Chicken {this._shortId}. Cluck!";
+        }
+
+        public void Feed() {
+            Console.WriteLine($"Chicken {this._shortId} just ate {this.FeedPerDay}kg of feed.");
+        }
+
     }
 }
