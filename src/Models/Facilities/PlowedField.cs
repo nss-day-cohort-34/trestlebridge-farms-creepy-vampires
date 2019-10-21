@@ -19,23 +19,21 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(ISeedProducing resource) {
             for (int i = 0; i < 5; i++) {
-                _plants.Add (resource);
+                _plants.Add(resource);
             }
         }
 
         public void AddResource(List<ISeedProducing> resources) {
-            foreach(ISeedProducing resource in resources)
-            {
+            foreach (ISeedProducing resource in resources) {
                 for (int i = 0; i < 5; i++) {
-                _plants.Add (resource);
-            }
+                    _plants.Add(resource);
+                }
             }
         }
 
-        public void AddResource(Sunflower sunflower)
-        {
+        public void AddResource(Sunflower sunflower) {
             for (int i = 0; i < 5; i++) {
-                _plants.Add (sunflower);
+                _plants.Add(sunflower);
             }
         }
 
