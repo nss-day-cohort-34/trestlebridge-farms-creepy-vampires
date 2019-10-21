@@ -6,21 +6,21 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Actions {
     public class ChoosePlowedField {
-        public static void CollectInput (Farm farm, ISeedProducing plant) {
+        public static void CollectInput(Farm farm, ISeedProducing plant) {
             Console.Clear();
 
-            for (int i = 1; i <= farm.PlowedFields.Count; i++)
-            {
-                Console.WriteLine ($"{i}. Plowed Field");
+            for (int i = 1; i <= farm.PlowedFields.Count; i++) {
+                Console.WriteLine($"{i}. Plowed Fields{farm.PlowedFields[i-1].shortId()} has {farm.PlowedFields[i - 1].numOfPlants()} plants.");
+
             }
 
-            Console.WriteLine ();
+            Console.WriteLine();
 
             // How can I output the type of seed chosen here?
-            Console.WriteLine ($"Place the plant where?");
+            Console.WriteLine($"Place the plant where?");
 
-            Console.Write ("> ");
-            int choice = Int32.Parse(Console.ReadLine ());
+            Console.Write("> ");
+            int choice = Int32.Parse(Console.ReadLine());
 
             farm.PlowedFields[choice - 1].AddResource(plant);
 

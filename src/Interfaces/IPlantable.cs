@@ -2,8 +2,11 @@ using Trestlebridge.Models.Plants;
 namespace Trestlebridge.Interfaces
 
 {
-    public interface IPlantable
-    {
+    public interface IPlantable {
         void AddResource(Sunflower sunflower);
+        public int numOfPlants();
+        public string shortId();
+        public string Type { get; set; }
+
     }
 }

@@ -14,7 +14,7 @@ namespace Trestlebridge.Actions
 
             for (int i = 1; i <= farm.ChickenHouses.Count; i++)
             {
-                Console.WriteLine($"{i}. Chicken House");
+                Console.WriteLine($"{i}. Chicken House{farm.ChickenHouses[i-1].shortId()} has {farm.ChickenHouses[i - 1].numOfAnimals()} animals.");
             }
 
             Console.WriteLine();

@@ -9,9 +9,8 @@ namespace Trestlebridge.Actions {
         public static void CollectInput(Farm farm, IGrazing animal) {
             Console.Clear();
 
-            for (int i = 1; i <= farm.GrazingFields.Count; i++)
-            {
-                Console.WriteLine($"{i}. Grazing Field");
+            for (int i = 1; i <= farm.GrazingFields.Count; i++) {
+                Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} has {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
             }
 
             Console.WriteLine();

@@ -9,6 +9,12 @@ namespace Trestlebridge.Models.Facilities {
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
+        public int numOfAnimals() {
+            return _animals.Count;
+        }
+        public string shortId() {
+            return _id.ToString().Substring(this._id.ToString().Length - 6);
+        }
 
         public double Capacity {
             get {
@@ -23,8 +29,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(List<IGrazing> animals) {
             // Take in a list of Igrazing animals and add each one to the field's _animal List
-            foreach(IGrazing animal in animals)
-            {
+            foreach (IGrazing animal in animals) {
                 _animals.Add(animal);
             }
         }
