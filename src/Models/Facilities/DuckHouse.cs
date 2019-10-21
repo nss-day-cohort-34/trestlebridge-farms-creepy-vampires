@@ -24,12 +24,20 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
         public void AddResource(Duck resource) {
-            _ducks.Add(resource);
+            if (Capacity >= _ducks.Count) {
+                Console.WriteLine("This duck house is at capacity.");
+            } else {
+                _ducks.Add(resource);
+            }
         }
 
         public void AddResource(List<Duck> resources) {
             foreach (Duck duck in resources) {
-                _ducks.Add(duck);
+                if (Capacity >= _ducks.Count) {
+                    Console.WriteLine("This duck house is at capacity.");
+                } else {
+                    _ducks.Add(duck);
+                }
             }
         }
 

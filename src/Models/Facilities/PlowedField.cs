@@ -29,20 +29,28 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(ISeedProducing resource) {
             for (int i = 0; i < 5; i++) {
-                _plants.Add(resource);
+                if (Capacity >= _plants.Count) {
+                    Console.WriteLine("This plowed field is at capacity.");
+                } else {
+                    _plants.Add(resource);
+                }
             }
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-            Console.WriteLine($"5 {resource} add to plowed field {shortId}.");
+            Console.WriteLine($"5 {resource} added to plowed field {shortId}.");
             Thread.Sleep(2000);
         }
 
         public void AddResource(List<ISeedProducing> resources) {
             foreach (ISeedProducing resource in resources) {
                 for (int i = 0; i < 5; i++) {
-                    _plants.Add(resource);
+                    if (Capacity >= _plants.Count) {
+                        Console.WriteLine("This plowed field is at capacity.");
+                    } else {
+                        _plants.Add(resource);
+                    }
                 }
                 string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-                Console.WriteLine($"5 {resource} add to plowed field {shortId}.");
+                Console.WriteLine($"5 {resource} added to plowed field {shortId}.");
                 Thread.Sleep(2000);
             }
         }
