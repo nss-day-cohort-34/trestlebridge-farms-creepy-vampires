@@ -7,7 +7,7 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
     public class PlowedField : IFacility<ISeedProducing>, IPlantable {
-        private int _capacity = 65;
+        private int _capacity = 5;
         private Guid _id = Guid.NewGuid();
 
         private List<ISeedProducing> _plants = new List<ISeedProducing>();

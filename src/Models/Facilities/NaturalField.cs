@@ -7,7 +7,7 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
     public class NaturalField : IFacility<ICompostProducing>, IPlantable {
-        private int _capacity = 60;
+        private int _capacity = 6;
         private Guid _id { get; } = Guid.NewGuid();
 
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
@@ -26,12 +26,13 @@ namespace Trestlebridge.Models.Facilities {
         }
 
         public void AddResource(ICompostProducing resource) {
-            for (int i = 0; i < 6; i++) {
-                if (_plants.Count < Capacity) {
+            if (_plants.Count < Capacity) {
+                for (int i = 0; i < 6; i++) {
                     _plants.Add(resource);
-                } else {
-                    Console.WriteLine("This natural field is at capacity.");
                 }
+            } else {
+                Console.WriteLine("This natural field is at capacity.");
+                Thread.Sleep(2000);
             }
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
             Console.WriteLine($"6 {resource} added to natural field {shortId}.");
@@ -40,12 +41,12 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(List<ICompostProducing> resources) {
             foreach (ICompostProducing resource in resources) {
-                for (int i = 0; i < 6; i++) {
-                    if (_plants.Count < Capacity) {
+                if (_plants.Count < Capacity) {
+                    for (int i = 0; i < 6; i++) {
                         _plants.Add(resource);
-                    } else {
-                        Console.WriteLine("This plowed field is at capacity.");
                     }
+                } else {
+                    Console.WriteLine("This plowed field is at capacity.");
                 }
                 string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
                 Console.WriteLine($"6 {resource} added to natural field {shortId}.");
