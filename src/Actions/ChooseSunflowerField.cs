@@ -3,6 +3,7 @@ using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Plants;
+using System.Threading;
 
 namespace Trestlebridge.Actions {
     public class ChooseSunflowerField {
@@ -11,7 +12,7 @@ namespace Trestlebridge.Actions {
 
             for (int i = 1; i <= farm.PlantFields.Count; i++)
             {
-                Console.WriteLine ($"{i}. {farm.PlantFields[i - 1].ToString()} Field");
+                Console.WriteLine ($"{i}. {farm.PlantFields[i - 1].ToString()}");
             }
 
             Console.WriteLine ();
