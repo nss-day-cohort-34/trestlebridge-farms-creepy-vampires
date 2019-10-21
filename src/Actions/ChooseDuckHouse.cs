@@ -4,17 +4,13 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
-namespace Trestlebridge.Actions
-{
-    public class ChooseDuckHouse
-    {
-        public static void CollectInput(Farm farm, Duck duck)
-        {
+namespace Trestlebridge.Actions {
+    public class ChooseDuckHouse {
+        public static void CollectInput(Farm farm, Duck duck) {
             Console.Clear();
 
-            for (int i = 1; i <= farm.DuckHouses.Count; i++)
-            {
-                Console.WriteLine($"{i}. Duck House");
+            for (int i = 1; i <= farm.DuckHouses.Count; i++) {
+                Console.WriteLine($"{i}. Duck House{farm.DuckHouses[i-1].shortId()} has {farm.DuckHouses[i - 1].numOfAnimals()} animals.");
             }
 
             Console.WriteLine();

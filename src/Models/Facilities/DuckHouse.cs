@@ -4,37 +4,36 @@ using System.Text;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Animals;
 
-namespace Trestlebridge.Models.Facilities
-{
-    public class DuckHouse : IFacility<Duck>
-    {
+namespace Trestlebridge.Models.Facilities {
+    public class DuckHouse : IFacility<Duck> {
         private int _capacity = 12; // max capacity of 12 ducks
         private Guid _id = Guid.NewGuid();
 
         private List<Duck> _ducks = new List<Duck>();
 
-        public double Capacity
-        {
-            get
-            {
+        public int numOfAnimals() {
+            return _ducks.Count;
+        }
+        public string shortId() {
+            return _id.ToString().Substring(this._id.ToString().Length - 6);
+        }
+
+        public double Capacity {
+            get {
                 return _capacity;
             }
         }
-        public void AddResource(Duck resource)
-        {
+        public void AddResource(Duck resource) {
             _ducks.Add(resource);
         }
 
-        public void AddResource(List<Duck> resources)
-        {
-            foreach(Duck duck in resources)
-            {
+        public void AddResource(List<Duck> resources) {
+            foreach (Duck duck in resources) {
                 _ducks.Add(duck);
             }
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
