@@ -11,7 +11,7 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<Chicken> _chickens = new List<Chicken>();
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -23,7 +23,7 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
         public void AddResource(Chicken resource) {
-            if (Capacity < _chickens.Count) {
+            if (_chickens.Count < Capacity) {
                 _chickens.Add(resource);
             } else {
                 Console.WriteLine("This chicken house is at capacity.");
@@ -32,7 +32,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(List<Chicken> resources) {
             foreach (Chicken chicken in resources) {
-                if (Capacity < _chickens.Count) {
+                if (_chickens.Count < Capacity) {
                     _chickens.Add(chicken);
                 } else {
                     Console.WriteLine("This chicken house is at capacity.");

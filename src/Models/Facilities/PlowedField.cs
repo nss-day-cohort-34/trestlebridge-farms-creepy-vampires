@@ -19,7 +19,7 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -29,7 +29,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(ISeedProducing resource) {
             for (int i = 0; i < 5; i++) {
-                if (Capacity < _plants.Count) {
+                if (_plants.Count < Capacity) {
                     _plants.Add(resource);
                 } else {
                     Console.WriteLine("This plowed field is at capacity.");
@@ -43,7 +43,7 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource(List<ISeedProducing> resources) {
             foreach (ISeedProducing resource in resources) {
                 for (int i = 0; i < 5; i++) {
-                    if (Capacity < _plants.Count) {
+                    if (_plants.Count < Capacity) {
                         _plants.Add(resource);
                     } else {
                         Console.WriteLine("This plowed field is at capacity.");

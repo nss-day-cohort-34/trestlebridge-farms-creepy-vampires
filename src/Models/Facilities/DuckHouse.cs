@@ -18,13 +18,13 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
         }
         public void AddResource(Duck resource) {
-            if (Capacity < _ducks.Count) {
+            if (_ducks.Count < Capacity) {
                 _ducks.Add(resource);
             } else {
                 Console.WriteLine("This duck house is at capacity.");
@@ -33,7 +33,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(List<Duck> resources) {
             foreach (Duck duck in resources) {
-                if (Capacity < _ducks.Count) {
+                if (_ducks.Count < Capacity) {
                     _ducks.Add(duck);
                 } else {
                     Console.WriteLine("This duck house is at capacity.");

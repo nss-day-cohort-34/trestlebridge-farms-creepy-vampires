@@ -19,7 +19,7 @@ namespace Trestlebridge.Models.Facilities {
         }
         public string Type { get; set; } = "Natural Field";
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -27,7 +27,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(ICompostProducing resource) {
             for (int i = 0; i < 6; i++) {
-                if (Capacity < _plants.Count) {
+                if (_plants.Count < Capacity) {
                     _plants.Add(resource);
                 } else {
                     Console.WriteLine("This natural field is at capacity.");
@@ -41,7 +41,7 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource(List<ICompostProducing> resources) {
             foreach (ICompostProducing resource in resources) {
                 for (int i = 0; i < 6; i++) {
-                    if (Capacity < _plants.Count) {
+                    if (_plants.Count < Capacity) {
                         _plants.Add(resource);
                     } else {
                         Console.WriteLine("This plowed field is at capacity.");

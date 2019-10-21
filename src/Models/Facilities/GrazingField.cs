@@ -16,7 +16,7 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -24,7 +24,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(IGrazing animal) {
             // Take in an IGrazing animal and add it to the field's _animal List
-            if (Capacity < _animals.Count) {
+            if (_animals.Count < Capacity) {
                 _animals.Add(animal);
             } else {
                 Console.WriteLine("This grazing field is at capacity.");
@@ -34,7 +34,7 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource(List<IGrazing> animals) {
             // Take in a list of Igrazing animals and add each one to the field's _animal List
             foreach (IGrazing animal in animals) {
-                if (Capacity < _animals.Count) {
+                if (_animals.Count < Capacity) {
                     _animals.Add(animal);
                 } else {
                     Console.WriteLine("This grazing field is at capacity.");

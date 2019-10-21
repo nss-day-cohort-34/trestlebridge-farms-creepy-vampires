@@ -12,9 +12,9 @@ namespace Trestlebridge.Actions {
             for (int i = 1; i <= farm.DuckHouses.Count; i++) {
                 if (farm.DuckHouses[i - 1].Capacity > farm.DuckHouses[i - 1].numOfAnimals()) {
 
-                    Console.WriteLine($"{i}. Duck House{farm.DuckHouses[i-1].shortId()} has {farm.DuckHouses[i - 1].numOfAnimals()} animals.");
+                    Console.WriteLine($"{i}. Duck House {farm.DuckHouses[i-1].shortId()} has {farm.DuckHouses[i - 1].numOfAnimals()} animals.");
                 } else {
-                    Console.WriteLine($"{i}. Grazing Field{farm.DuckHouses[i-1].shortId()} is at capacity with {farm.DuckHouses[i - 1].numOfAnimals()} animals.");
+                    Console.WriteLine($"{i}. Duck House {farm.DuckHouses[i-1].shortId()} is at capacity with {farm.DuckHouses[i - 1].numOfAnimals()} animals.");
                 }
 
             }

@@ -12,7 +12,6 @@ namespace Trestlebridge.Actions {
 
             for (int i = 1; i <= farm.PlantFields.Count; i++) {
                 if (farm.PlantFields[i - 1].Capacity > farm.PlantFields[i - 1].numOfPlants()) {
-
                     Console.WriteLine($"{i}. {farm.PlantFields[i-1].Type} {farm.PlantFields[i-1].shortId()} has {farm.PlantFields[i - 1].numOfPlants()} plants.");
                 } else {
                     Console.WriteLine($"{i}. {farm.PlantFields[i-1].Type} {farm.PlantFields[i-1].shortId()} is at capacity with {farm.PlantFields[i - 1].numOfPlants()} plants.");
