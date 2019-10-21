@@ -13,6 +13,8 @@ namespace Trestlebridge.Models {
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<DuckHouse> DuckHouses { get; } = new List <DuckHouse>();
 
+        public List<IPlantable> PlantFields { get; } = new List <IPlantable>();
+
         /*
             This method must specify the correct product interface of the
             resource being purchased.
@@ -36,11 +38,13 @@ namespace Trestlebridge.Models {
         }
         public void AddPlowedField(PlowedField field) {
             PlowedFields.Add(field);
+            PlantFields.Add(field);
             Console.WriteLine("A new plowed field has been created.");
             Thread.Sleep(2000);
         }
         public void AddNaturalField(NaturalField field) {
             NaturalFields.Add(field);
+            PlantFields.Add(field);
             Console.WriteLine("A new natural field has been created.");
             Thread.Sleep(2000);
         }
