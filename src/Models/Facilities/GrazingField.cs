@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing> {
-        private int _capacity = 20; // changed capacity from 50 to 20.
+        private int _capacity = 3; // changed capacity from 50 to 20.
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
@@ -16,7 +17,7 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -24,13 +25,23 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(IGrazing animal) {
             // Take in an IGrazing animal and add it to the field's _animal List
-            _animals.Add(animal);
+            if (_animals.Count < Capacity) {
+                _animals.Add(animal);
+            } else {
+                Console.WriteLine("This grazing field is at capacity.");
+                Thread.Sleep(2000);
+            }
         }
 
         public void AddResource(List<IGrazing> animals) {
             // Take in a list of Igrazing animals and add each one to the field's _animal List
             foreach (IGrazing animal in animals) {
-                _animals.Add(animal);
+                if (_animals.Count < Capacity) {
+                    _animals.Add(animal);
+                } else {
+                    Console.WriteLine("This grazing field is at capacity.");
+                    Thread.Sleep(2000);
+                }
             }
         }
 

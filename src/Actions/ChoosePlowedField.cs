@@ -10,8 +10,11 @@ namespace Trestlebridge.Actions {
             Console.Clear();
 
             for (int i = 1; i <= farm.PlowedFields.Count; i++) {
-                Console.WriteLine($"{i}. Plowed Fields{farm.PlowedFields[i-1].shortId()} has {farm.PlowedFields[i - 1].numOfPlants()} plants.");
-
+                if (farm.PlowedFields[i - 1].Capacity > farm.PlowedFields[i - 1].numOfPlants()) {
+                    Console.WriteLine($"{i}. Plowed Field {farm.PlowedFields[i-1].shortId()} has {farm.PlowedFields[i - 1].numOfPlants()} plants.");
+                } else {
+                    Console.WriteLine($"{i}. Plowed Field {farm.PlowedFields[i-1].shortId()} is at capacity with {farm.PlowedFields[i - 1].numOfPlants()} plants.");
+                }
             }
 
             Console.WriteLine();

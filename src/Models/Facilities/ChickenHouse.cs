@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IFacility<Chicken> {
-        private int _capacity = 15; // max capacity of 15 chickens
+        private int _capacity = 2; // max capacity of 15 chickens
         private Guid _id = Guid.NewGuid();
 
         private List<Chicken> _chickens = new List<Chicken>();
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -23,12 +24,22 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
         public void AddResource(Chicken resource) {
-            _chickens.Add(resource);
+            if (_chickens.Count < Capacity) {
+                _chickens.Add(resource);
+            } else {
+                Console.WriteLine("This chicken house is at capacity.");
+                Thread.Sleep(2000);
+            }
         }
 
         public void AddResource(List<Chicken> resources) {
             foreach (Chicken chicken in resources) {
-                _chickens.Add(chicken);
+                if (_chickens.Count < Capacity) {
+                    _chickens.Add(chicken);
+                } else {
+                    Console.WriteLine("This chicken house is at capacity.");
+                    Thread.Sleep(2000);
+                }
             }
         }
 

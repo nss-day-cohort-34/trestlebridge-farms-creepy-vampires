@@ -6,6 +6,7 @@ namespace Trestlebridge.Interfaces
         void AddResource(Sunflower sunflower);
         public int numOfPlants();
         public string shortId();
+        public int Capacity {get;}
         public string Type { get; set; }
 
     }

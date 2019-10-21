@@ -7,7 +7,7 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
     public class PlowedField : IFacility<ISeedProducing>, IPlantable {
-        private int _capacity = 65;
+        private int _capacity = 5;
         private Guid _id = Guid.NewGuid();
 
         private List<ISeedProducing> _plants = new List<ISeedProducing>();
@@ -19,7 +19,7 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
 
-        public double Capacity {
+        public int Capacity {
             get {
                 return _capacity;
             }
@@ -29,20 +29,28 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(ISeedProducing resource) {
             for (int i = 0; i < 5; i++) {
-                _plants.Add(resource);
+                if (_plants.Count < Capacity) {
+                    _plants.Add(resource);
+                } else {
+                    Console.WriteLine("This plowed field is at capacity.");
+                }
             }
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-            Console.WriteLine($"5 {resource} add to plowed field {shortId}.");
+            Console.WriteLine($"5 {resource} added to plowed field {shortId}.");
             Thread.Sleep(2000);
         }
 
         public void AddResource(List<ISeedProducing> resources) {
             foreach (ISeedProducing resource in resources) {
                 for (int i = 0; i < 5; i++) {
-                    _plants.Add(resource);
+                    if (_plants.Count < Capacity) {
+                        _plants.Add(resource);
+                    } else {
+                        Console.WriteLine("This plowed field is at capacity.");
+                    }
                 }
                 string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-                Console.WriteLine($"5 {resource} add to plowed field {shortId}.");
+                Console.WriteLine($"5 {resource} added to plowed field {shortId}.");
                 Thread.Sleep(2000);
             }
         }

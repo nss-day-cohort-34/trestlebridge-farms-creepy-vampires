@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
@@ -10,7 +11,11 @@ namespace Trestlebridge.Actions {
             Console.Clear();
 
             for (int i = 1; i <= farm.GrazingFields.Count; i++) {
-                Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} has {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
+                if (farm.GrazingFields[i - 1].Capacity > farm.GrazingFields[i - 1].numOfAnimals()) {
+                    Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} has {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
+                } else {
+                    Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} is at capacity with {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
+                }
             }
 
             Console.WriteLine();
