@@ -24,20 +24,20 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(IGrazing animal) {
             // Take in an IGrazing animal and add it to the field's _animal List
-            if (Capacity >= _animals.Count) {
-                Console.WriteLine("This grazing field is at capacity.");
-            } else {
+            if (Capacity < _animals.Count) {
                 _animals.Add(animal);
+            } else {
+                Console.WriteLine("This grazing field is at capacity.");
             }
         }
 
         public void AddResource(List<IGrazing> animals) {
             // Take in a list of Igrazing animals and add each one to the field's _animal List
             foreach (IGrazing animal in animals) {
-                if (Capacity >= _animals.Count) {
-                    Console.WriteLine("This grazing field is at capacity.");
-                } else {
+                if (Capacity < _animals.Count) {
                     _animals.Add(animal);
+                } else {
+                    Console.WriteLine("This grazing field is at capacity.");
                 }
             }
         }

@@ -23,19 +23,19 @@ namespace Trestlebridge.Models.Facilities {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
         }
         public void AddResource(Chicken resource) {
-            if (Capacity >= _chickens.Count) {
-                Console.WriteLine("This chicken house is at capacity.");
-            } else {
+            if (Capacity < _chickens.Count) {
                 _chickens.Add(resource);
+            } else {
+                Console.WriteLine("This chicken house is at capacity.");
             }
         }
 
         public void AddResource(List<Chicken> resources) {
             foreach (Chicken chicken in resources) {
-                if (Capacity >= _chickens.Count) {
-                    Console.WriteLine("This chicken house is at capacity.");
-                } else {
+                if (Capacity < _chickens.Count) {
                     _chickens.Add(chicken);
+                } else {
+                    Console.WriteLine("This chicken house is at capacity.");
                 }
             }
         }
