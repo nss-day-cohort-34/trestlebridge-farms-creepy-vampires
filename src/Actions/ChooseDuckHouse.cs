@@ -35,7 +35,6 @@ namespace Trestlebridge {
                 Thread.Sleep(1000);
                 CollectInput(farm, duck);
             }
-
         }
     }
 }
