@@ -2,6 +2,7 @@
 using System.Linq;
 using Trestlebridge.Actions;
 using Trestlebridge.Models;
+using System.Threading;
 
 namespace Trestlebridge {
     class Program {
@@ -56,6 +57,7 @@ namespace Trestlebridge {
                     break;
                 } else {
                     Console.WriteLine($"Invalid option: {option}");
+                    Thread.Sleep(2000);
                 }
             }
         }
