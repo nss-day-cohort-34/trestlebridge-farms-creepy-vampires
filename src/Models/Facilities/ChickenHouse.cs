@@ -26,6 +26,8 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource(Chicken resource) {
             if (_chickens.Count < Capacity) {
                 _chickens.Add(resource);
+                Console.WriteLine($"{resource} has been added to chicken house {shortId()}");
+                Thread.Sleep(2000);
             } else {
                 Console.WriteLine("This chicken house is at capacity.");
                 Thread.Sleep(2000);
@@ -36,6 +38,8 @@ namespace Trestlebridge.Models.Facilities {
             foreach (Chicken chicken in resources) {
                 if (_chickens.Count < Capacity) {
                     _chickens.Add(chicken);
+                    Console.WriteLine($"{resources} has been added to chicken house {shortId()}");
+                    Thread.Sleep(2000);
                 } else {
                     Console.WriteLine("This chicken house is at capacity.");
                     Thread.Sleep(2000);
