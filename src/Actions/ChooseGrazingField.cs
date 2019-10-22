@@ -9,7 +9,7 @@ using Trestlebridge.Models.Facilities;
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
         public static void CollectInput(Farm farm, IGrazing animal) {
-            Console.Clear();
+            Utils.Clear();
 
             for (int i = 1; i <= farm.GrazingFields.Count; i++) {
                 GrazingField field = farm.GrazingFields[i - 1];
@@ -27,7 +27,7 @@ namespace Trestlebridge.Actions {
                     {
                         Console.WriteLine($"{report.Name}: {report.Count}");
                     }
-                
+
                 } else {
                     Console.WriteLine($"{i}. Grazing Field {field.shortId()} is at capacity with {field.numOfAnimals()} animals.");
                     var counts = field.Animals.GroupBy(animal => animal.Type)

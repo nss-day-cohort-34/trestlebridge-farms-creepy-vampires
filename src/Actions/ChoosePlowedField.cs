@@ -8,7 +8,7 @@ using Trestlebridge.Models.Facilities;
 namespace Trestlebridge.Actions {
     public class ChoosePlowedField {
         public static void CollectInput(Farm farm, IPlant plant) {
-            Console.Clear();
+            Utils.Clear();
 
             for (int i = 1; i <= farm.PlowedFields.Count; i++) {
                 PlowedField field = farm.PlowedFields[i - 1];

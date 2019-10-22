@@ -8,13 +8,13 @@ using Trestlebridge.Models.Plants;
 namespace Trestlebridge.Actions {
     public class ChooseSunflowerField {
         public static void CollectInput(Farm farm, IPlant sunflower) {
-            Console.Clear();
+            Utils.Clear();
 
             for (int i = 1; i <= farm.PlantFields.Count; i++) {
                 IPlantable field = farm.PlantFields[i - 1];
                 if (field.Capacity > field.numOfPlants()) {
                     Console.WriteLine($"{i}. {field.Type} {field.shortId()} has {field.numOfPlants() / field.PlantsPerRow } rows of plants.");
-                    
+
                     // Print out the counts of each type of animal
                     var counts = field.Plants.GroupBy(plant => plant.Type)
                         .Select(group => new PrintReport
