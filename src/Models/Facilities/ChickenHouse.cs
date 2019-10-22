@@ -7,7 +7,7 @@ using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IFacility<Chicken> {
-        private int _capacity = 2; // max capacity of 15 chickens
+        private int _capacity = 15; // max capacity of 15 chickens
         private Guid _id = Guid.NewGuid();
 
         private List<Chicken> _chickens = new List<Chicken>();

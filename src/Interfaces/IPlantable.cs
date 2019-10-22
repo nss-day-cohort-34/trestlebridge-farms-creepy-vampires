@@ -8,6 +8,7 @@ namespace Trestlebridge.Interfaces
         public string shortId();
         public int Capacity {get;}
         public string Type { get; set; }
+        public int PlantsPerRow { get; }
 
     }
 }

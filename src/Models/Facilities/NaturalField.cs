@@ -7,7 +7,7 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
     public class NaturalField : IFacility<ICompostProducing>, IPlantable {
-        private int _capacity = 6;
+        private int _capacity = 60;
         private Guid _id { get; } = Guid.NewGuid();
 
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
@@ -24,6 +24,8 @@ namespace Trestlebridge.Models.Facilities {
                 return _capacity;
             }
         }
+
+        public int PlantsPerRow { get; } = 6;
 
         public void AddResource(ICompostProducing resource) {
             if (_plants.Count < Capacity) {
