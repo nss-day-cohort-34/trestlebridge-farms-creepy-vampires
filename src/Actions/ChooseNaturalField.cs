@@ -8,7 +8,7 @@ using Trestlebridge.Models.Facilities;
 namespace Trestlebridge.Actions {
     public class ChooseNaturalField {
         public static void CollectInput(Farm farm, IPlant plant) {
-            Console.Clear();
+            Utils.Clear();
 
             for (int i = 1; i <= farm.NaturalFields.Count; i++) {
                 NaturalField field = farm.NaturalFields[i - 1];

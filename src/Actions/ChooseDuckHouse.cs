@@ -4,10 +4,10 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
-namespace Trestlebridge.Actions {
+namespace Trestlebridge {
     public class ChooseDuckHouse {
         public static void CollectInput(Farm farm, Duck duck) {
-            Console.Clear();
+            Utils.Clear();
 
             for (int i = 1; i <= farm.DuckHouses.Count; i++) {
                 if (farm.DuckHouses[i - 1].Capacity > farm.DuckHouses[i - 1].numOfAnimals()) {
