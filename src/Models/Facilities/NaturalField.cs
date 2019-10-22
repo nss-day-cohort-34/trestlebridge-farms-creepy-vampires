@@ -30,13 +30,14 @@ namespace Trestlebridge.Models.Facilities {
                 for (int i = 0; i < 6; i++) {
                     _plants.Add(resource);
                 }
+                string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
+                Console.WriteLine($"6 {resource} added to natural field {shortId}.");
+                Thread.Sleep(2000);
             } else {
                 Console.WriteLine("This natural field is at capacity.");
                 Thread.Sleep(2000);
             }
-            string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-            Console.WriteLine($"6 {resource} added to natural field {shortId}.");
-            Thread.Sleep(2000);
+            
         }
 
         public void AddResource(List<ICompostProducing> resources) {
@@ -45,22 +46,54 @@ namespace Trestlebridge.Models.Facilities {
                     for (int i = 0; i < 6; i++) {
                         _plants.Add(resource);
                     }
+                    string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
+                    Console.WriteLine($"6 {resource} added to natural field {shortId}.");
+                    Thread.Sleep(2000);
                 } else {
-                    Console.WriteLine("This plowed field is at capacity.");
+                    Console.WriteLine("This natural field is at capacity.");
+                    Thread.Sleep(2000);
                 }
-                string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-                Console.WriteLine($"6 {resource} added to natural field {shortId}.");
-                Thread.Sleep(2000);
+                
             }
         }
 
         public void AddResource(Sunflower sunflower) {
-            for (int i = 0; i < 6; i++) {
-                _plants.Add(sunflower);
+            if (_plants.Count < Capacity) {
+                for (int i = 0; i < 6; i++)
+                {
+                    _plants.Add(sunflower);
+                }
+                string shortId = this._id.ToString().Substring(this._id.ToString().Length - 6);
+                Console.WriteLine($"6 sunflowers add to natural field {shortId}.");
+                Thread.Sleep(2000);
+            } else {
+                Console.WriteLine("This natural field is at capacity.");
+                Thread.Sleep(2000);
             }
-            string shortId = this._id.ToString().Substring(this._id.ToString().Length - 6);
-            Console.WriteLine($"6 sunflowers add to natural field {shortId}.");
-            Thread.Sleep(2000);
+            
+        }
+
+        public void AddResource(List<Sunflower> resources)
+        {
+            foreach (ICompostProducing resource in resources)
+            {
+                if (_plants.Count < Capacity)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        _plants.Add(resource);
+                    }
+                    string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
+                    Console.WriteLine($"6 {resource} added to natural field {shortId}.");
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.WriteLine("This natural field is at capacity.");
+                    Thread.Sleep(2000);
+                }
+
+            }
         }
 
         public override string ToString() {
