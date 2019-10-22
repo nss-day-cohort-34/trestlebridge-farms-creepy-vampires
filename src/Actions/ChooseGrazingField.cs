@@ -4,6 +4,7 @@ using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
@@ -11,15 +12,35 @@ namespace Trestlebridge.Actions {
             Console.Clear();
 
             for (int i = 1; i <= farm.GrazingFields.Count; i++) {
-                if (farm.GrazingFields[i - 1].Capacity > farm.GrazingFields[i - 1].numOfAnimals()) {
+                GrazingField field = farm.GrazingFields[i - 1];
+                if (field.Capacity > field.numOfAnimals()) {
                     // Print out the number of total animals
-                    Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} has {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
+                    Console.WriteLine($"{i}. Grazing Field {field.shortId()} has {field.numOfAnimals()} animals.");
                     // Print out the counts of each type of animal
-                    
-                
+                    var counts = field.Animals.GroupBy(animal => animal.Type)
+                        .Select(group => new PrintReport {
+                            Name = group.Key,
+                            Count = group.Count()
+                        });
+
+                    foreach(PrintReport report in counts)
+                    {
+                        Console.WriteLine($"{report.Name}: {report.Count}");
+                    }
                 
                 } else {
-                    Console.WriteLine($"{i}. Grazing Field{farm.GrazingFields[i-1].shortId()} is at capacity with {farm.GrazingFields[i - 1].numOfAnimals()} animals.");
+                    Console.WriteLine($"{i}. Grazing Field {field.shortId()} is at capacity with {field.numOfAnimals()} animals.");
+                    var counts = field.Animals.GroupBy(animal => animal.Type)
+                        .Select(group => new PrintReport
+                        {
+                            Name = group.Key,
+                            Count = group.Count()
+                        });
+
+                    foreach (PrintReport report in counts)
+                    {
+                        Console.WriteLine($"{report.Name}: {report.Count}");
+                    }
                 }
             }
 

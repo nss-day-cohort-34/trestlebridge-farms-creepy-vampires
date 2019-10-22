@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Threading;
 using Trestlebridge.Interfaces;
 
@@ -10,6 +11,12 @@ namespace Trestlebridge.Models.Facilities {
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
+
+        public List<IGrazing> Animals {
+            get {
+                return _animals;
+            }
+        }
         public int numOfAnimals() {
             return _animals.Count;
         }
