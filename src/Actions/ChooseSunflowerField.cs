@@ -10,7 +10,9 @@ namespace Trestlebridge.Actions {
         public static void CollectInput(Farm farm, IPlant sunflower) {
             Utils.Clear();
 
-            for (int i = 1; i <= farm.PlantFields.Count; i++) {
+            try
+            {
+                for (int i = 1; i <= farm.PlantFields.Count; i++) {
                 IPlantable field = farm.PlantFields[i - 1];
                 if (field.Capacity > field.numOfPlants()) {
                     Console.WriteLine($"{i}. {field.Type} {field.shortId()} has {field.numOfPlants() / field.PlantsPerRow } rows of plants.");
@@ -46,6 +48,15 @@ namespace Trestlebridge.Actions {
 
             farm.PlantFields[choice - 1].AddResource(sunflower);
 
+            }
+            catch
+            {
+                Console.WriteLine ("Please enter a valid selection.");
+                Thread.Sleep (1000);
+                CollectInput (farm, sunflower);
+            }
+
+            
             /*
                 Couldn't get this to work. Can you?
                 Stretch goal. Only if the app is fully functional.
