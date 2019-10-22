@@ -11,7 +11,7 @@ namespace Trestlebridge.Actions {
 
             for (int i = 1; i <= farm.NaturalFields.Count; i++) {
                 if (farm.NaturalFields[i - 1].Capacity > farm.NaturalFields[i - 1].numOfPlants()) {
-                    Console.WriteLine($"{i}. Natural Field {farm.NaturalFields[i-1].shortId()} has {farm.NaturalFields[i - 1].numOfPlants()} plants.");
+                    Console.WriteLine($"{i}. Natural Field {farm.NaturalFields[i-1].shortId()} has {(farm.NaturalFields[i - 1].numOfPlants() / 6)} rows of plants.");
                 } else {
                     Console.WriteLine($"{i}. Natural Field {farm.NaturalFields[i-1].shortId()} is at capacity with {farm.NaturalFields[i - 1].numOfPlants()} plants.");
                 }
