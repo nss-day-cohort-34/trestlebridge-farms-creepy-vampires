@@ -6,7 +6,7 @@ using Trestlebridge.Models;
 namespace Trestlebridge {
     class Program {
         static void DisplayBanner() {
-            Console.Clear();
+            Utils.Clear();
             Console.WriteLine();
             Console.WriteLine(@"
         +-++-++-++-++-++-++-++-++-++-++-++-++-+
