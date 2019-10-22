@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using System.Threading;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Actions;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing> {
@@ -52,12 +53,24 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+
         public override string ToString() {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
-
             output.Append($"Grazing field {shortId} has {this._animals.Count} animals\n");
-            this._animals.ForEach(a => output.Append($"   {a}\n"));
+            // Print out the counts of each type of animal
+            var counts = Animals.GroupBy(animal => animal.Type)
+                .Select(group => new PrintReport
+                {
+                    Name = group.Key,
+                    Count = group.Count()
+                });
+
+            // this._animals.ForEach(a => output.Append($"   {a}\n"));
+            foreach (PrintReport report in counts)
+            {
+                output.Append($"   {report.Name}: {report.Count}\n");
+            }
 
             return output.ToString();
         }

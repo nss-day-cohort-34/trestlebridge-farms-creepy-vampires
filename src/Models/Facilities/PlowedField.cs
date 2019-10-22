@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Plants;
+using Trestlebridge.Actions;
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities {
     public class PlowedField : IFacility<IPlant>, IPlantable {
@@ -114,8 +116,23 @@ namespace Trestlebridge.Models.Facilities {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
+            // Print out the counts of each type of animal
+            var counts = Plants.GroupBy(plant => plant.Type)
+                .Select(group => new PrintReport
+                {
+                    Name = group.Key,
+                    Count = group.Count()
+                });
+
+            
+
             output.Append($"Plowed field {shortId} has {this._plants.Count} plants\n");
-            this._plants.ForEach(a => output.Append($"   {a}\n"));
+            // this._plants.ForEach(a => output.Append($"   {a}\n"));
+
+            foreach (PrintReport report in counts)
+            {
+                output.Append($"  {report.Name}: {report.Count}\n");
+            }
 
             return output.ToString();
         }
