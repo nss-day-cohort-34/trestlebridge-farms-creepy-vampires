@@ -8,34 +8,30 @@ namespace Trestlebridge.Models.Animals {
         private double _feathersProduced = 0.5;
         private int _eggsProduced = 7;
         private double _meatProduced = 1.7;
-
+        public double FeedPerDay { get; set; } = 0.9;
+        public string Type { get; } = "Chicken";
         private string _shortId {
             get {
                 return this._id.ToString().Substring(this._id.ToString().Length - 6);
             }
         }
 
-        public string Type { get; } = "Chicken";
-        public double FeedPerDay { get; set; } = 0.9;
 
         // Methods
         public double Pluck() {
             return _feathersProduced;
         }
-
         public double CollectEggs() {
             return _eggsProduced;
         }
         public double Butcher() {
             return _meatProduced;
         }
-
-        public override string ToString() {
-            return $"Chicken {this._shortId}. Cluck!";
-        }
-
         public void Feed() {
             Console.WriteLine($"Chicken {this._shortId} just ate {this.FeedPerDay}kg of feed.");
+        }
+        public override string ToString() {
+            return $"Chicken {this._shortId}. Cluck!";
         }
 
     }
