@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 using System.Threading;
-using Trestlebridge.Interfaces;
 using Trestlebridge.Actions;
+using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing> {
@@ -35,6 +35,8 @@ namespace Trestlebridge.Models.Facilities {
             // Take in an IGrazing animal and add it to the field's _animal List
             if (_animals.Count < Capacity) {
                 _animals.Add(animal);
+                Console.WriteLine($"{animal} has been added to grazing field {shortId()}");
+                Thread.Sleep(2000);
             } else {
                 Console.WriteLine("This grazing field is at capacity.");
                 Thread.Sleep(2000);
@@ -46,6 +48,8 @@ namespace Trestlebridge.Models.Facilities {
             foreach (IGrazing animal in animals) {
                 if (_animals.Count < Capacity) {
                     _animals.Add(animal);
+                    Console.WriteLine($"{animal} has been added to grazing field {shortId()}");
+                    Thread.Sleep(2000);
                 } else {
                     Console.WriteLine("This grazing field is at capacity.");
                     Thread.Sleep(2000);
@@ -53,22 +57,19 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-
         public override string ToString() {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
             output.Append($"Grazing field {shortId} has {this._animals.Count} animals\n");
             // Print out the counts of each type of animal
             var counts = Animals.GroupBy(animal => animal.Type)
-                .Select(group => new PrintReport
-                {
+                .Select(group => new PrintReport {
                     Name = group.Key,
-                    Count = group.Count()
+                        Count = group.Count()
                 });
 
             // this._animals.ForEach(a => output.Append($"   {a}\n"));
-            foreach (PrintReport report in counts)
-            {
+            foreach (PrintReport report in counts) {
                 output.Append($"   {report.Name}: {report.Count}\n");
             }
 
