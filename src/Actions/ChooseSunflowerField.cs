@@ -7,12 +7,26 @@ using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Actions {
     public class ChooseSunflowerField {
-        public static void CollectInput(Farm farm, Sunflower sunflower) {
+        public static void CollectInput(Farm farm, IPlant sunflower) {
             Console.Clear();
 
             for (int i = 1; i <= farm.PlantFields.Count; i++) {
-                if (farm.PlantFields[i - 1].Capacity > farm.PlantFields[i - 1].numOfPlants()) {
-                    Console.WriteLine($"{i}. {farm.PlantFields[i-1].Type} {farm.PlantFields[i-1].shortId()} has {farm.PlantFields[i - 1].numOfPlants() / farm.PlantFields[i - 1].PlantsPerRow } rows of plants.");
+                IPlantable field = farm.PlantFields[i - 1];
+                if (field.Capacity > field.numOfPlants()) {
+                    Console.WriteLine($"{i}. {field.Type} {field.shortId()} has {field.numOfPlants() / field.PlantsPerRow } rows of plants.");
+                    
+                    // Print out the counts of each type of animal
+                    var counts = field.Plants.GroupBy(plant => plant.Type)
+                        .Select(group => new PrintReport
+                        {
+                            Name = group.Key,
+                            Count = group.Count()
+                        });
+
+                    foreach (PrintReport report in counts)
+                    {
+                        Console.WriteLine($"{report.Name}: {report.Count}");
+                    }
                 } else {
                     Console.WriteLine($"{i}. {farm.PlantFields[i-1].Type} {farm.PlantFields[i-1].shortId()} is at capacity with {farm.PlantFields[i - 1].numOfPlants()} plants.");
                 }

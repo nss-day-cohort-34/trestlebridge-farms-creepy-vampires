@@ -6,11 +6,16 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
-    public class PlowedField : IFacility<ISeedProducing>, IPlantable {
+    public class PlowedField : IFacility<IPlant>, IPlantable {
         private int _capacity = 65;
         private Guid _id = Guid.NewGuid();
 
-        private List<ISeedProducing> _plants = new List<ISeedProducing>();
+        private List<IPlant> _plants = new List<IPlant>();
+        public List<IPlant> Plants {
+            get {
+                return _plants;
+            }
+        }
 
         public int numOfPlants() {
             return _plants.Count;
@@ -29,7 +34,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public string Type { get; set; } = "Plowed Field";
 
-        public void AddResource(ISeedProducing resource) {
+        public void AddResource(IPlant resource) {
             if (_plants.Count < Capacity)
             {
                 for (int i = 0; i < 5; i++)
@@ -45,9 +50,9 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource(List<ISeedProducing> resources)
+        public void AddResource(List<IPlant> resources)
         {
-            foreach (ISeedProducing resource in resources)
+            foreach (IPlant resource in resources)
             {
                 if (_plants.Count < Capacity)
                 {

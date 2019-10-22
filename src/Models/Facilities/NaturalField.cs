@@ -6,13 +6,19 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Models.Facilities {
-    public class NaturalField : IFacility<ICompostProducing>, IPlantable {
+    public class NaturalField : IFacility<IPlant>, IPlantable {
         private int _capacity = 60;
         private Guid _id { get; } = Guid.NewGuid();
 
-        private List<ICompostProducing> _plants = new List<ICompostProducing>();
+        private List<IPlant> _plants = new List<IPlant>();
         public int numOfPlants() {
             return _plants.Count;
+        }
+
+        public List<IPlant> Plants {
+            get {
+                return _plants;
+            }
         }
         public string shortId() {
             return _id.ToString().Substring(this._id.ToString().Length - 6);
@@ -27,7 +33,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public int PlantsPerRow { get; } = 6;
 
-        public void AddResource(ICompostProducing resource) {
+        public void AddResource(IPlant resource) {
             if (_plants.Count < Capacity) {
                 for (int i = 0; i < 6; i++) {
                     _plants.Add(resource);
@@ -42,8 +48,8 @@ namespace Trestlebridge.Models.Facilities {
             
         }
 
-        public void AddResource(List<ICompostProducing> resources) {
-            foreach (ICompostProducing resource in resources) {
+        public void AddResource(List<IPlant> resources) {
+            foreach (IPlant resource in resources) {
                 if (_plants.Count < Capacity) {
                     for (int i = 0; i < 6; i++) {
                         _plants.Add(resource);
@@ -77,7 +83,7 @@ namespace Trestlebridge.Models.Facilities {
 
         public void AddResource(List<Sunflower> resources)
         {
-            foreach (ICompostProducing resource in resources)
+            foreach (IPlant resource in resources)
             {
                 if (_plants.Count < Capacity)
                 {
