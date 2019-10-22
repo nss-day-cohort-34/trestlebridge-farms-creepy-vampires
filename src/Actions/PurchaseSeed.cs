@@ -34,6 +34,7 @@ namespace Trestlebridge.Actions {
                     default:
                         Console.WriteLine("Please enter a valid selction.");
                         Thread.Sleep(1000);
+                        Utils.Clear();
                         CollectInput(farm);
                         break;
                 }
@@ -42,6 +43,7 @@ namespace Trestlebridge.Actions {
             {
                 Console.WriteLine("Please enter a valid selection.");
                 Thread.Sleep(1000);
+                Utils.Clear();
                 CollectInput(farm);
             }
             
